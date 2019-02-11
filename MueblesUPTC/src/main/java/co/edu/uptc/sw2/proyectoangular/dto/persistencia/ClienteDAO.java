@@ -18,15 +18,16 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ClienteDAO {
-     @PersistenceContext
+    
+    @PersistenceContext
     private EntityManager em;
     
-    public List<Producto> getCliente(){
+    public List<ClienteFactura> getCliente(){
         String query = "Select e from ClienteFactura e";
         return em.createQuery(query).getResultList();
     }
     
-    public ClienteFactura guardarProducto(ClienteFactura cf){
+    public ClienteFactura guardarCliente(ClienteFactura cf){
         em.persist(cf);
         return  cf;
     }

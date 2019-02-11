@@ -24,31 +24,31 @@ public class ServicioDetalleFactura {
     public List<Object[]> getDetalleFactura() {
         System.out.println("error.........................................");
 
-        for (Object[] objects : detalleFacturaDAO.consultaValorFactura()) {
-            System.out.println("Factura" + objects[0].toString());
-            System.out.println("Valor Iva" + objects[1]);
-            System.out.println("Valor Real" + objects[2]);
-            System.out.println("Valor Total" + objects[3]);
-        }
-        System.out.println("Annio 2018.................................................................");
-        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2018()) {
-
-            System.out.println("Factura" + objects[0].toString());
-            System.out.println("Valor Iva" + objects[1]);
-            System.out.println("Valor Real" + objects[2]);
-            System.out.println("Valor Total" + objects[3]);
-
-        }
-
-        System.out.println("Annio 2019.................................................................");
-        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2019()) {
-
-            System.out.println("Factura" + objects[0].toString());
-            System.out.println("Valor Iva" + objects[1]);
-            System.out.println("Valor Real" + objects[2]);
-            System.out.println("Valor Total" + objects[3]);
-
-        }
+//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura()) {
+//            System.out.println("Factura" + objects[0].toString());
+//            System.out.println("Valor Iva" + objects[1]);
+//            System.out.println("Valor Real" + objects[2]);
+//            System.out.println("Valor Total" + objects[3]);
+//        }
+//        System.out.println("Annio 2018.................................................................");
+//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2018()) {
+//
+//            System.out.println("Factura" + objects[0].toString());
+//            System.out.println("Valor Iva" + objects[1]);
+//            System.out.println("Valor Real" + objects[2]);
+//            System.out.println("Valor Total" + objects[3]);
+//
+//        }
+//
+//        System.out.println("Annio 2019.................................................................");
+//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2019()) {
+//
+//            System.out.println("Factura" + objects[0].toString());
+//            System.out.println("Valor Iva" + objects[1]);
+//            System.out.println("Valor Real" + objects[2]);
+//            System.out.println("Valor Total" + objects[3]);
+//
+//        }
 
 //        for (Object object : detalleFacturaDAO.getConsultaClientes()) {
 //            System.out.println("Clientes: " + object.toString().);
@@ -62,6 +62,6 @@ public class ServicioDetalleFactura {
 //        for (Object object : detalleFacturaDAO.getDetalles()) {
 //            System.out.println("detalles: "+object.toString());
 //        }
-        return detalleFacturaDAO.consultaValorFactura();
+        return null;
     }
 }

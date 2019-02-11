@@ -22,20 +22,20 @@ public class FacturaDAO {
     private EntityManager em;
     
     public List<Factura> getFactura(){
-        String query = "Select e from FacturaDTO e";
+        String query = "Select e from Factura e";
         return em.createQuery(query).getResultList();
     }
     
-    public Factura guardarFactura(Factura facturaDTO){
-        em.persist(facturaDTO);
-        return  facturaDTO;
+    public Factura guardarFactura(Factura factura){
+        em.persist(factura);
+        return  factura;
     }
     
-    public void eliminarFactura(Factura facturaDTO){
-        em.remove(em.find(Factura.class, facturaDTO.getIdFactura()));
+    public void eliminarFactura(Factura factura){
+        em.remove(em.find(Factura.class, factura.getIdFactura()));
     }
     
-    public void editarFactura(Factura facturaDTO){
-        em.merge(facturaDTO);
+    public void editarFactura(Factura factura){
+        em.merge(factura);
     }
 }

@@ -5,24 +5,26 @@
  */
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.banco;
 
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.*;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author PEDRO
  */
 @Entity
-public class ClienteBanco {
+public class ClienteBanco implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idClienteFactura;
     private String cedula;
     private String nombre;
+    @OneToOne
     private Tarjeta idTarjeta;
 
     public ClienteBanco() {

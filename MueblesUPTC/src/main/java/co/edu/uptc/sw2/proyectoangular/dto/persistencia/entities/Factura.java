@@ -10,11 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Factura {
+public class Factura{
 
     @OneToMany(mappedBy = "idFactura",orphanRemoval=true, cascade={CascadeType.ALL})
     private List<DetalleFactura> detalleFactura;
-    private String nombreCliente;
+    private ClienteFactura idClienteFactura;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
@@ -23,24 +23,20 @@ public class Factura {
     public Factura() {
     }
     
-    
-
-    public List<DetalleFactura> getDetalleFacturaDTOs() {
+    public List<DetalleFactura> getDetalleFactura() {
         return detalleFactura;
     }
 
-    public void setDetalleFacturaDTOs(List<DetalleFactura> detalleFacturaDTOs) {
-        this.detalleFactura = detalleFacturaDTOs;
-    }
-    
-    
-
-    public String getNombreCliente() {
-        return nombreCliente;
+    public void setDetalleFactura(List<DetalleFactura> detalleFactura) {
+        this.detalleFactura = detalleFactura;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public ClienteFactura getIdClienteFactura() {
+        return idClienteFactura;
+    }
+
+    public void setIdClienteFactura(ClienteFactura idClienteFactura) {
+        this.idClienteFactura = idClienteFactura;
     }
 
     public int getIdFactura() {
@@ -57,10 +53,5 @@ public class Factura {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    @Override
-    public String toString() {
-        return "FacturaDTO{" + "detalleFacturaDTOs=" + detalleFactura + ", nombreCliente=" + nombreCliente + ", idFactura=" + idFactura + ", fecha=" + fecha + '}';
     }
 }

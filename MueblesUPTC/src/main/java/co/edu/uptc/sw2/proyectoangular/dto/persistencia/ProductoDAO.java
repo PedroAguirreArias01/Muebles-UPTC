@@ -27,17 +27,17 @@ public class ProductoDAO {
         return em.createQuery(query).getResultList();
     }
     
-    public Producto guardarProducto(Producto productoDTO){
-        em.persist(productoDTO);
-        return  productoDTO;
+    public Producto guardarProducto(Producto producto){
+        em.persist(producto);
+        return  producto;
     }
     
-    public void eliminarProducto(Producto productoDTO){
-        em.remove(em.find(Producto.class, productoDTO.getIdProducto()));
+    public void eliminarProducto(Producto producto){
+        em.remove(em.find(Producto.class, producto.getIdProducto()));
     }
     
-    public Producto editarProducto(Producto productoDTO){
-        em.merge(productoDTO);
-        return productoDTO;
+    public Producto editarProducto(Producto producto){
+        em.merge(producto);
+        return producto;
     }
 }

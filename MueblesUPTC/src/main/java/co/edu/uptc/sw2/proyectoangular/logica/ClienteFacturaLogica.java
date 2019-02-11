@@ -7,7 +7,6 @@ package co.edu.uptc.sw2.proyectoangular.logica;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.ClienteDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.ClienteFactura;
-import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.Producto;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,12 +21,12 @@ public class ClienteFacturaLogica {
     @EJB
     private ClienteDAO clienteDAO;
     
-     public List<Producto> getCliente(){
+     public List<ClienteFactura> getCliente(){
         return clienteDAO.getCliente();
     }
     
     public ClienteFactura guardarProducto(ClienteFactura cf){
-        return  clienteDAO.guardarProducto(cf);
+        return  clienteDAO.guardarCliente(cf);
     }
     
     public void eliminarCliente(ClienteFactura cf){
