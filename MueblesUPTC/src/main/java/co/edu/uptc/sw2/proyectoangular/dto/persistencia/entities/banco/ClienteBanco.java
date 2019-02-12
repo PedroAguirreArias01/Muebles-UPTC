@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,7 +20,7 @@ public class ClienteBanco implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idClienteFactura;
+    private int idClienteBanco;
     private String cedula;
     private String nombre;
     private Tarjeta idTarjeta;
@@ -29,12 +28,12 @@ public class ClienteBanco implements Serializable {
     public ClienteBanco() {
     }
     
-    public int getIdClienteFactura() {
-        return idClienteFactura;
+    public int getIdClienteBanco() {
+        return idClienteBanco;
     }
 
-    public void setIdClienteFactura(int idClienteFactura) {
-        this.idClienteFactura = idClienteFactura;
+    public void setIdClienteBanco(int idClienteBanco) {
+        this.idClienteBanco = idClienteBanco;
     }
 
     public String getCedula() {
@@ -60,6 +59,4 @@ public class ClienteBanco implements Serializable {
     public void setIdTarjeta(Tarjeta idTarjeta) {
         this.idTarjeta = idTarjeta;
     }
-    
-    
 }
