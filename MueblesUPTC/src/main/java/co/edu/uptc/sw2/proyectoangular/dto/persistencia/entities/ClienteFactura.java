@@ -5,6 +5,7 @@
  */
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ import javax.persistence.Id;
  * @author PEDRO
  */
 @Entity
-public class ClienteFactura {
+public class ClienteFactura implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

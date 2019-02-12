@@ -9,12 +9,15 @@ import co.edu.uptc.sw2.proyectoangular.dto.persistencia.FacturaDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.Factura;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author PEDRO
  */
+@Stateless
 public class FacturaLogica {
+    
      @EJB
     private FacturaDAO facturaDAO;
     

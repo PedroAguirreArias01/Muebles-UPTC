@@ -19,21 +19,21 @@ import javax.ejb.Stateless;
 public class ProductoLogica {
     
     @EJB
-    private ProductoDAO facultadDAO;
+    private ProductoDAO productoDAO;
     
-    public List<Producto> getFacultades(){
-        return facultadDAO.getProducto();
+    public List<Producto> getProducto(){
+        return productoDAO.getProducto();
     }
     
-    public Producto guardarFacultad(Producto facultadDTO){
-        return facultadDAO.guardarProducto(facultadDTO);
+    public Producto guardarProducto(Producto producto){
+        return productoDAO.guardarProducto(producto);
     }
     
-    public void eliminarFacultad(Producto facultadDTO){
-        facultadDAO.eliminarProducto(facultadDTO);
+    public void eliminarProducto(Producto producto){
+        productoDAO.eliminarProducto(producto);
     }
     
-    public Producto editarFacultad(Producto facultadDTO){
-        return facultadDAO.editarProducto(facultadDTO);
+    public Producto editarProducto(Producto producto){
+        return productoDAO.editarProducto(producto);
     }
 }

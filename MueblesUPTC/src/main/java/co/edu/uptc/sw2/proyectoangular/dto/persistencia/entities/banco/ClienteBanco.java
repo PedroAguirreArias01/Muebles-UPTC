@@ -24,7 +24,6 @@ public class ClienteBanco implements Serializable {
     private int idClienteFactura;
     private String cedula;
     private String nombre;
-    @OneToOne
     private Tarjeta idTarjeta;
 
     public ClienteBanco() {

@@ -15,11 +15,10 @@ import javax.persistence.PersistenceContext;
  *
  * @author PEDRO
  */
-
 @Stateless
 public class ProductoDAO {
     
-    @PersistenceContext
+    @PersistenceContext( unitName = "com.mycompany_MueblesUPTC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     
     public List<Producto> getProducto(){

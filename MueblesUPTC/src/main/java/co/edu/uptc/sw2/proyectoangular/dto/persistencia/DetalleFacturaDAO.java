@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class DetalleFacturaDAO {
     
-    @PersistenceContext
+    @PersistenceContext( unitName = "com.mycompany_MueblesUPTC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     
     public List<DetalleFactura> getDetalleFactura(){

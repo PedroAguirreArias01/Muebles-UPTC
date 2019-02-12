@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ClienteDAO {
     
-    @PersistenceContext
+    @PersistenceContext( unitName = "com.mycompany_MueblesUPTC_war_1.0-SNAPSHOTPU")
     private EntityManager em;
     
     public List<ClienteFactura> getCliente(){
@@ -27,17 +27,17 @@ public class ClienteDAO {
         return em.createQuery(query).getResultList();
     }
     
-    public ClienteFactura guardarCliente(ClienteFactura cf){
-        em.persist(cf);
-        return  cf;
+    public ClienteFactura guardarCliente(ClienteFactura clienteFactura){
+        em.persist(clienteFactura);
+        return  clienteFactura;
     }
     
-    public void eliminarCliente(ClienteFactura cf){
-        em.remove(em.find(Producto.class, cf.getIdClienteFactura()));
+    public void eliminarCliente(ClienteFactura clienteFactura){
+        em.remove(em.find(Producto.class, clienteFactura.getIdClienteFactura()));
     }
     
-    public ClienteFactura editarCliente(ClienteFactura cf){
-        em.merge(cf);
-        return cf;
+    public ClienteFactura editarCliente(ClienteFactura clienteFactura){
+        em.merge(clienteFactura);
+        return clienteFactura;
     }
 }

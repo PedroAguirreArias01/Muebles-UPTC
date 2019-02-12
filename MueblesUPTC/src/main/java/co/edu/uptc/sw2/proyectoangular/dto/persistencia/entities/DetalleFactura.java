@@ -19,8 +19,8 @@ public class DetalleFactura{
     private int cantidad;
     private float valorTotal;
 
-    public DetalleFactura() {
-    }
+//    public DetalleFactura() {
+//    }
     
     public int getIdDetalle() {
         return idDetalle;

@@ -1,5 +1,6 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -8,16 +9,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 @Entity
-public class Factura{
+public class Factura implements Serializable{
 
     @OneToMany(mappedBy = "idFactura",orphanRemoval=true, cascade={CascadeType.ALL})
     private List<DetalleFactura> detalleFactura;
+    
     private ClienteFactura idClienteFactura;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     public Factura() {
