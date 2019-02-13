@@ -1,11 +1,14 @@
 package co.edu.uptc.sw2.servicios;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.DetalleFacturaDAO;
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.DetalleFactura;
+import co.edu.uptc.sw2.proyectoangular.logica.DetalleFacturaLogica;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -17,51 +20,23 @@ import javax.ws.rs.core.MediaType;
 public class ServicioDetalleFactura {
 
     @EJB
-    private DetalleFacturaDAO detalleFacturaDAO;
+    private DetalleFacturaLogica dfl;
 
     @GET
-    //      @Path("/getDetalles")
-    public List<Object[]> getDetalleFactura() {
-        System.out.println("error.........................................");
-
-//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura()) {
-//            System.out.println("Factura" + objects[0].toString());
-//            System.out.println("Valor Iva" + objects[1]);
-//            System.out.println("Valor Real" + objects[2]);
-//            System.out.println("Valor Total" + objects[3]);
-//        }
-//        System.out.println("Annio 2018.................................................................");
-//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2018()) {
-//
-//            System.out.println("Factura" + objects[0].toString());
-//            System.out.println("Valor Iva" + objects[1]);
-//            System.out.println("Valor Real" + objects[2]);
-//            System.out.println("Valor Total" + objects[3]);
-//
-//        }
-//
-//        System.out.println("Annio 2019.................................................................");
-//        for (Object[] objects : detalleFacturaDAO.consultaValorFactura2019()) {
-//
-//            System.out.println("Factura" + objects[0].toString());
-//            System.out.println("Valor Iva" + objects[1]);
-//            System.out.println("Valor Real" + objects[2]);
-//            System.out.println("Valor Total" + objects[3]);
-//
-//        }
-
-//        for (Object object : detalleFacturaDAO.getConsultaClientes()) {
-//            System.out.println("Clientes: " + object.toString().);
-//        }
-//        for (int i = 0; i < detalleFacturaDAO.getConsultaClientes().size(); i++) {
-//            System.out.println("Clientes: " + detalleFacturaDAO.getConsultaClientes().get(i).getClass().toGenericString());
-//
-//        }
-//        System.out.println("Producto Menos Vendido: " + detalleFacturaDAO.productoMenosVendido().toString());
-//        System.err.println("Total de ventas = " + detalleFacturaDAO.consultaVentas().toString());
-//        for (Object object : detalleFacturaDAO.getDetalles()) {
-//            System.out.println("detalles: "+object.toString());
-//        }
-        return null;
+    public List<DetalleFactura> getDetalleFactura() {
+        return dfl.getDetalleFactura();
     }
+    
+    @POST
+    public DetalleFactura guardarDetalles(DetalleFactura detalleFactura) {
+        
+        for (int i = 0; i < dfl.getDetalleFactura().size(); i++) {
+            if (dfl.getDetalleFactura().get(i).getIdDetalle()== (detalleFactura.getIdDetalle())) {
+                return dfl.editarDetalleFactura(detalleFactura);
+            }
+        }
+        dfl.guardarDetalleFactura(detalleFactura);
+        return detalleFactura;
+    }
+    
 }

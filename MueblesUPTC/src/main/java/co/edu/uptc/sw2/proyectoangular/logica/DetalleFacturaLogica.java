@@ -7,6 +7,7 @@ package co.edu.uptc.sw2.proyectoangular.logica;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.DetalleFacturaDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.DetalleFactura;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -18,17 +19,21 @@ import javax.ejb.Stateless;
 public class DetalleFacturaLogica {
     
     @EJB
-    private DetalleFacturaDAO detalleFactura;
+    private DetalleFacturaDAO df;
+    
+    public List<DetalleFactura> getDetalleFactura(){
+        return df.getDetalleFactura();
+    }
     
     public DetalleFactura guardarDetalleFactura(DetalleFactura matriculaDTO){
-        return detalleFactura.guardarDetalleFactura(matriculaDTO);
+        return df.guardarDetalleFactura(matriculaDTO);
     }
     
     public void eliminarDetalleFactura(DetalleFactura matriculaDTO){
-        detalleFactura.eliminarDetalleFactura(matriculaDTO);
+        df.eliminarDetalleFactura(matriculaDTO);
     }
     
-    public void ediatarDetalleFactura(DetalleFactura matriculaDTO){
-        detalleFactura.editarDetalleFactura(matriculaDTO);
+    public DetalleFactura editarDetalleFactura(DetalleFactura detalleFactura){
+        return df.editarDetalleFactura(detalleFactura);
     }
 }

@@ -1,0 +1,33 @@
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Ventas</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-click="nuevo()">Nuevas Ventas</button>
+        </div>
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    valor
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                <td>{{row.nombre}}</td>
+                <td>{{row.valor}}</td>
+                <td class="row">
+                    <button type="button" class="btn btn-info" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+</div>
+
+

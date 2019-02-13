@@ -40,7 +40,7 @@ public class DetalleFacturaDAO {
         em.remove(em.find(DetalleFactura.class, detalleFactura.getIdDetalle()));
     }
     
-    public void editarDetalleFactura(DetalleFactura detalleFactura){
-        em.merge(detalleFactura);
+    public DetalleFactura editarDetalleFactura(DetalleFactura detalleFactura){
+       return em.merge(detalleFactura);
     }
 }

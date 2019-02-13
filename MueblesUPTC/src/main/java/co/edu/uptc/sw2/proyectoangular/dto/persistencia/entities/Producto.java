@@ -15,7 +15,8 @@ public class Producto implements Serializable {
     
     private String nombre;
     private float valor;
-
+    private int cantidad;
+    
     public Producto() {
     }
     
@@ -41,5 +42,13 @@ public class Producto implements Serializable {
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }
