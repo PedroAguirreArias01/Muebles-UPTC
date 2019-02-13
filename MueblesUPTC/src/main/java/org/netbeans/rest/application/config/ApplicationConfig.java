@@ -33,6 +33,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uptc.sw2.servicios.ServicioDetalleFactura.class);
         resources.add(co.edu.uptc.sw2.servicios.ServicioFactura.class);
         resources.add(co.edu.uptc.sw2.servicios.ServicioProducto.class);
+        resources.add(co.edu.uptc.sw2.servicios.banco.ServicioClienteBanco.class);
+        resources.add(co.edu.uptc.sw2.servicios.banco.ServicoTarjeta.class);
     }
-    
 }

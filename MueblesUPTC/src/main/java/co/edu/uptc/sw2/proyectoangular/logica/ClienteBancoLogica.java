@@ -3,40 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uptc.sw2.proyectoangular.dto.persistencia.banco;
+package co.edu.uptc.sw2.proyectoangular.logica;
 
+import co.edu.uptc.sw2.proyectoangular.dto.persistencia.banco.ClienteBancoDAO;
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.banco.ClienteBanco;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author PEDRO
  */
 @Stateless
-public class ClienteBancoDAO {
+public class ClienteBancoLogica {
     
-    @PersistenceContext( unitName = "com.mycompany_MueblesUPTC_war_1.0-SNAPSHOTPU2")
-    private EntityManager em;
+    @EJB
+    private ClienteBancoDAO clienteBancoDAO;
     
     public List<ClienteBanco> getClienteBanco(){
-        String query = "Select e from ClienteBanco e";
-        return em.createQuery(query).getResultList();
+        return clienteBancoDAO.getClienteBanco();
     }
     
     public ClienteBanco guardarClienteBanco(ClienteBanco clienteBanco){
-        em.persist(clienteBanco);
-        return  clienteBanco;
+        return  clienteBancoDAO.guardarClienteBanco(clienteBanco);
     }
     
     public void eliminarClienteBanco(ClienteBanco clienteBanco){
-        em.remove(em.find(ClienteBanco.class, clienteBanco.getIdClienteBanco()));
+        clienteBancoDAO.eliminarClienteBanco(clienteBanco);
     }
     
     public ClienteBanco editarClienteBanco(ClienteBanco clienteBanco){
-        em.merge(clienteBanco);
-        return clienteBanco;
+        return clienteBancoDAO.editarClienteBanco(clienteBanco);
     }
+    
 }
