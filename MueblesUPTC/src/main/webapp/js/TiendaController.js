@@ -3,7 +3,11 @@
 module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         //listar
         $scope.lista = null;
-        
+        $scope.listaDetalles = null;
+        $scope.listaProductos = null;
+        $scope.datosFormularioFactura = {listaDetalles: []};
+        $scope.datosFormularioDetalle = {};
+
         $scope.getConsulta = function () {
             $http.get("./webresources/ServicioProducto", {})
                     .then(function (response) {
@@ -16,6 +20,23 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
                     });
         };
 
-       
+        $scope.guardarFactura = function () {
+            console.log($scope.datosFormulario);
+            $http.post("./webresources/ServicioFactura", $scope.datosFormulario)
+                    .then(function (response) {
+                        $scope.getConsulta();
+                    });
+            $scope.panelEditar = false;
+        };
+        
+        $scope.crearDetalle = function () {
+            console.log($scope.datosFormulario);
+            $http.post("./webresources/ServicioDetalleFactura", $scope.datosFormulario)
+                    .then(function (response) {
+                        $scope.getConsulta();
+                    });
+            $scope.panelEditar = false;
+        };
+        
         $scope.getConsulta();
     }]);

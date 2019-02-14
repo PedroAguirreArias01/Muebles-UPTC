@@ -1,16 +1,19 @@
-<div class="panel panel-primary" ng-hide="panelEditar">
+<div class="panel panel-primary" ng-hide="panelVentas">
     <div class="panel-heading">Ventas</div>
     <div class="panel-body">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary" ng-click="nuevo()">Nuevas Ventas</button>
-        </div>
         <table class="resultados table table-striped">
             <tr>
                 <th>
                     Nombre
                 </th>
                 <th>
-                    valor
+                    Valor Unitario
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Valor Total
                 </th>
                 <th>
 
@@ -19,8 +22,54 @@
             <tr ng-repeat="row in lista">
                 <td>{{row.nombre}}</td>
                 <td>{{row.valor}}</td>
+                <td>{{row.cantidad}}</td>
+                <td>valor Total</td>
+
                 <td class="row">
-                    <button type="button" class="btn btn-info" ng-click="editar(row)">
+                    <button type="button" class="btn btn-info" ng-click="agregarCarrito(row)">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" ng-click="nuevo()">Nuevas Ventas</button>
+    </div>
+</div>
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Productos</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-click="nuevo()">Producto</button>
+        </div>
+        <table class="resultados table table-striped">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Unidades Disponibles
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            <tr ng-repeat="row in lista">
+                <td>{{row.nombre}}</td>
+                <td>{{row.valor}}</td>
+                <td>{{row.cantidad}}</td>
+                <td><input class="form-control" type="number" placeholder="Cantidad" value="1"/></td>
+
+                <td class="row">
+                    <button type="button" class="btn btn-info" ng-click="agregarCarrito(row)">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito
                     </button>
                 </td>

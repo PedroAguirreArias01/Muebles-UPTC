@@ -35,7 +35,7 @@ public class FacturaDAO {
         em.remove(em.find(Factura.class, factura.getIdFactura()));
     }
     
-    public void editarFactura(Factura factura){
-        em.merge(factura);
+    public Factura editarFactura(Factura factura){
+        return em.merge(factura);
     }
 }

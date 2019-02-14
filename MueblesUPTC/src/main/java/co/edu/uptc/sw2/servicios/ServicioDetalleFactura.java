@@ -29,7 +29,6 @@ public class ServicioDetalleFactura {
     
     @POST
     public DetalleFactura guardarDetalles(DetalleFactura detalleFactura) {
-        
         for (int i = 0; i < dfl.getDetalleFactura().size(); i++) {
             if (dfl.getDetalleFactura().get(i).getIdDetalle()== (detalleFactura.getIdDetalle())) {
                 return dfl.editarDetalleFactura(detalleFactura);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uptc.sw2.servicios;
 
 import co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities.Factura;
@@ -10,6 +5,7 @@ import co.edu.uptc.sw2.proyectoangular.logica.FacturaLogica;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 /**
@@ -25,5 +21,16 @@ public class ServicioFactura {
     
     public List<Factura> getFacturas(){
         return facturaLogica.getFactura();
+    }
+    
+    @POST
+    public Factura guardarFactura(Factura factura) {
+        for (int i = 0; i < facturaLogica.getFactura().size(); i++) {
+            if (facturaLogica.getFactura().get(i).getIdFactura()== (factura.getIdFactura())) {
+                return facturaLogica.editarFactura(factura);
+            }
+        }
+        facturaLogica.guardarFactura(factura);
+        return factura;
     }
 }

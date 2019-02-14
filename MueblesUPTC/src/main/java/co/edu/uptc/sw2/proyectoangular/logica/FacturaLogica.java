@@ -33,7 +33,7 @@ public class FacturaLogica {
         facturaDAO.eliminarFactura(facturaDTO);
     }
     
-    public void ediatarFactura(Factura facturaDTO){
-        facturaDAO.editarFactura(facturaDTO);
+    public Factura editarFactura(Factura facturaDTO){
+        return facturaDAO.editarFactura(facturaDTO);
     }
 }
