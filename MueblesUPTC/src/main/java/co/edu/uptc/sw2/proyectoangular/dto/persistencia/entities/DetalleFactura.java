@@ -1,5 +1,6 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class DetalleFactura{
+public class DetalleFactura implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +17,11 @@ public class DetalleFactura{
     private Factura idFactura;
     @ManyToOne
     private Producto idProducto;
-    private int cantidad;
+    private int cantidadDetalle;
     private float valorTotal;
 
-//    public DetalleFactura() {
-//    }
+    public DetalleFactura() {
+    }
     
     public int getIdDetalle() {
         return idDetalle;
@@ -47,11 +48,11 @@ public class DetalleFactura{
     }
 
     public int getCantidad() {
-        return cantidad;
+        return cantidadDetalle;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidad(int cantidadDetalle) {
+        this.cantidadDetalle = cantidadDetalle;
     }
 
     public float getValorTotal() {

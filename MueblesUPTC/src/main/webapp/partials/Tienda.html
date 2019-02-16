@@ -19,17 +19,11 @@
 
                 </th>
             </tr>
-            <tr ng-repeat="row in lista">
-                <td>{{row.nombre}}</td>
-                <td>{{row.valor}}</td>
-                <td>{{row.cantidad}}</td>
-                <td>valor Total</td>
-
-                <td class="row">
-                    <button type="button" class="btn btn-info" ng-click="agregarCarrito(row)">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito
-                    </button>
-                </td>
+            <tr ng-repeat="row in listaDetalles">
+                <td>{{row.producto.nombre}}</td>
+                <td>{{row.producto.valor}}</td>
+                <td>{{row.cantidadDetalle}}</td>
+                <td>{{row.valorTotal}}</td>
             </tr>
         </table>
         <br/>
@@ -56,9 +50,6 @@
                     Unidades Disponibles
                 </th>
                 <th>
-                    Cantidad
-                </th>
-                <th>
 
                 </th>
             </tr>
@@ -66,7 +57,7 @@
                 <td>{{row.nombre}}</td>
                 <td>{{row.valor}}</td>
                 <td>{{row.cantidad}}</td>
-                <td><input class="form-control" type="number" placeholder="Cantidad" value="1"/></td>
+                <!--<td><input id="cantidad" class="form-control>" type="number" placeholder="Cantidad" value="1"/></td>-->
 
                 <td class="row">
                     <button type="button" class="btn btn-info" ng-click="agregarCarrito(row)">
@@ -79,4 +70,23 @@
     </div>
 </div>
 
-
+<!-- Modal -->
+<div class="modal fade" id="modalCantidad" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <label >Cantidad:</label>
+                <input id="cantidadDetalle" class="form-control>" 
+                       ng-model="datosDetalles.cantidadDetalle" 
+                       type="number" 
+                       placeholder="Cantidad" 
+                       value="1"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="guardarCantidad()">agregarCantidad</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

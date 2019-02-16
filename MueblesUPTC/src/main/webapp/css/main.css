@@ -52,3 +52,10 @@
     height: 50px;
     margin: -15px;
 }
+
+.panel-body{
+    overflow:scroll;
+     height:300px;
+     width:1200;
+     align-content: center;
+}
