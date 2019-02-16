@@ -4,32 +4,33 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Factura implements Serializable{
 
     @OneToMany(mappedBy = "idFactura",orphanRemoval=true, cascade={CascadeType.ALL})
     private List<DetalleFactura> detalleFactura;
-    
+    @ManyToOne
     private ClienteFactura idClienteFactura;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
     //@Formats.DateTime(pattern = "dd-mm-yyyy");
     //@Column(name = "fecha")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     public Factura() {
     }
-    
+
     public List<DetalleFactura> getDetalleFactura() {
         return detalleFactura;
     }

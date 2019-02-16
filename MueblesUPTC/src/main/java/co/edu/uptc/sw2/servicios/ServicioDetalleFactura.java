@@ -14,22 +14,21 @@ import javax.ws.rs.Path;
 public class ServicioDetalleFactura {
 
     @EJB
-    private DetalleFacturaLogica dfl;
+    private DetalleFacturaLogica detalleFacturaLogica;
 
     @GET
     public List<DetalleFactura> getDetalleFactura() {
-        return dfl.getDetalleFactura();
+        return detalleFacturaLogica.getDetalleFactura();
     }
     
     @POST
     public DetalleFactura guardarDetalles(DetalleFactura detalleFactura) {
-        for (int i = 0; i < dfl.getDetalleFactura().size(); i++) {
-            if (dfl.getDetalleFactura().get(i).getIdDetalle()== (detalleFactura.getIdDetalle())) {
-                return dfl.editarDetalleFactura(detalleFactura);
+        for (int i = 0; i < detalleFacturaLogica.getDetalleFactura().size(); i++) {
+            if (detalleFacturaLogica.getDetalleFactura().get(i).getIdDetalle()== (detalleFactura.getIdDetalle())) {
+                return detalleFacturaLogica.editarDetalleFactura(detalleFactura);
             }
         }
-        dfl.guardarDetalleFactura(detalleFactura);
+        detalleFacturaLogica.guardarDetalleFactura(detalleFactura);
         return detalleFactura;
     }
-    
 }

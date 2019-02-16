@@ -24,5 +24,4 @@ public class ServicioClienteFactura {
     public List<ClienteFactura> getCliente(){
         return clienteLogica.getCliente();
     }
-    
 }

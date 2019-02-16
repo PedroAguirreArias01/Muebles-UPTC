@@ -12,7 +12,6 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProducto;
-    
     private String nombre;
     private float valor;
     private int cantidad;

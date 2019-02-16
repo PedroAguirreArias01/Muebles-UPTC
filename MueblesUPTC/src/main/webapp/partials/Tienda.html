@@ -15,9 +15,6 @@
                 <th>
                     Valor Total
                 </th>
-                <th>
-
-                </th>
             </tr>
             <tr ng-repeat="row in listaDetalles">
                 <td>{{row.producto.nombre}}</td>
@@ -82,6 +79,12 @@
                        type="number" 
                        placeholder="Cantidad" 
                        value="1"/>
+                <label>Valor Total: </label>
+                <label id="valorTotal"
+                       class="form-control"
+                       ng-model="datosDetalles.valorTotal" 
+                       type="number"
+                       >{{datosDetalles.cantidadDetalle*datosDetalles.valor}}"</label>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="guardarCantidad()">agregarCantidad</button>

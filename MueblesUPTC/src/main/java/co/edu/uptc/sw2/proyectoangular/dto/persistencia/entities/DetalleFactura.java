@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class DetalleFactura implements Serializable{
-    
+public class DetalleFactura implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDetalle;
@@ -22,7 +22,7 @@ public class DetalleFactura implements Serializable{
 
     public DetalleFactura() {
     }
-    
+
     public int getIdDetalle() {
         return idDetalle;
     }
@@ -47,11 +47,11 @@ public class DetalleFactura implements Serializable{
         this.idProducto = idProducto;
     }
 
-    public int getCantidad() {
+    public int getCantidadDetalle() {
         return cantidadDetalle;
     }
 
-    public void setCantidad(int cantidadDetalle) {
+    public void setCantidadDetalle(int cantidadDetalle) {
         this.cantidadDetalle = cantidadDetalle;
     }
 
