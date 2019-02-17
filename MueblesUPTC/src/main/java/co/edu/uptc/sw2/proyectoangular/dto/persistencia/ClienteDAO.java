@@ -19,6 +19,7 @@ public class ClienteDAO {
     private EntityManager em;
     
     public List<ClienteFactura> getCliente(){
+        System.out.println("Llega aca....");
         String query = "Select e from ClienteFactura e";
         return em.createQuery(query).getResultList();
     }

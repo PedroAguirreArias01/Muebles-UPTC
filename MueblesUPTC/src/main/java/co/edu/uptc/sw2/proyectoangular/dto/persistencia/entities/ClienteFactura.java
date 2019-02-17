@@ -22,8 +22,8 @@ public class ClienteFactura implements Serializable {
     private int idClienteFactura;
     private String cedula;
     private String nombre;
-    @OneToMany(mappedBy = "idClienteFactura",orphanRemoval=true, cascade={CascadeType.ALL})
-    private List<Factura> facturas;
+//    @OneToMany(mappedBy = "idClienteFactura",orphanRemoval=true, cascade={CascadeType.ALL})
+//    private List<Factura> facturas;
 
     public ClienteFactura() {
     }
@@ -52,11 +52,11 @@ public class ClienteFactura implements Serializable {
         this.nombre = nombre;
     }
 
-    public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
-    }
+//    public List<Factura> getFacturas() {
+//        return facturas;
+//    }
+//
+//    public void setFacturas(List<Factura> facturas) {
+//        this.facturas = facturas;
+//    }
 }

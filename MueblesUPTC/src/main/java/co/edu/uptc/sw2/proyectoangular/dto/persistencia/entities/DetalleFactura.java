@@ -31,14 +31,6 @@ public class DetalleFactura implements Serializable {
         this.idDetalle = idDetalle;
     }
 
-    public Factura getIdFactura() {
-        return idFactura;
-    }
-
-    public void setIdFactura(Factura idFactura) {
-        this.idFactura = idFactura;
-    }
-
     public Producto getIdProducto() {
         return idProducto;
     }

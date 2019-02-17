@@ -13,7 +13,7 @@ public class DetalleFacturaDAO {
     private EntityManager em;
 
     public List<DetalleFactura> getDetalleFactura() {
-        String query = "Select e from DETALLEFACTURA e";
+        String query = "select e from DetalleFactura e";
         return em.createQuery(query).getResultList();
     }
 
