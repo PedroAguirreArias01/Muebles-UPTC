@@ -16,9 +16,9 @@
                     Valor Total
                 </th>
             </tr>
-            <tr ng-repeat="row in listaDetalles">
-                <td>{{row.producto.nombre}}</td>
-                <td>{{row.producto.valor}}</td>
+            <tr ng-repeat="row in listaDetallesF">
+                <td>{{row.idProducto.nombre}}</td>
+                <td>{{row.idProducto.valor}}</td>
                 <td>{{row.cantidadDetalle}}</td>
                 <td>{{row.valorTotal}}</td>
             </tr>
@@ -26,15 +26,12 @@
         <br/>
     </div>
     <div class="btn-group">
-        <button type="button" class="btn btn-primary" ng-click="nuevo()">Nuevas Ventas</button>
+        <button type="button" class="btn btn-primary" ng-click="validarCliente()">Realizar Compra</button>
     </div>
 </div>
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Productos</div>
     <div class="panel-body">
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary" ng-click="nuevo()">Producto</button>
-        </div>
         <table class="resultados table table-striped">
             <tr>
                 <th>
@@ -87,7 +84,25 @@
                        >{{datosDetalles.cantidadDetalle*datosDetalles.valor}}"</label>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="guardarCantidad()">agregarCantidad</button>
+                <button type="button" class="btn btn-default" ng-click="guardarCantidad()">Agregar Cantidad</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Registrar Cliente -->
+<div class="modal fade" id="modalRegistrarCliente" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <label>Cedula del Cliente:</label>
+                <select id="nombreCliente" class="form-control" ng-model="datosCliente.cedula">
+                    <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="finalizarCompra()">Seleccionar Cliente</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

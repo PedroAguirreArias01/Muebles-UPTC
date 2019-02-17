@@ -9,6 +9,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.listaProductos = null;
         $scope.datosFormularioFactura = {listaDetallesF: []};
         $scope.datosDetalles = {};
+        $scope.datosCliente = {};
         let valorTotal = 0;
 
         $scope.agregarCarrito = function (dato) {
@@ -19,18 +20,30 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.guardarCantidad = function () {
             valorTotal = $scope.datosDetalles.cantidadDetalle * $scope.datosDetalles.valor;
             console.log(valorTotal);
-            
+
             $('#modalCantidad').modal('hide');
             console.log($scope.datosDetalles);
+        };
+
+        $scope.validarCliente = function () {
+            $('#modalRegistrarCliente').modal('show');
+        };
+
+        $scope.finalizarCompra = function () {
+            for (var i = 0; i < $scope.listaClientes.length; i++) {
+                if ($scope.listaClientes[i].cedula === $scope.datosCliente.cedula) {
+                    console.log("Entraaa " + $scope.listaClientes[i].nombre);
+                    $scope.datosFormularioFactura = $scope.listaClientes[i];
+                }
+            }
+            console.log("Factura: " + $scope.datosFormularioFactura.idClienteFactura.cedula);
+            $('#modalCantidad').modal('hide');
         };
 
         $scope.getProductos = function () {
             $http.get("./webresources/ServicioProducto", {})
                     .then(function (response) {
                         $scope.lista = response.data;
-                        for (var i = 0; i < $scope.lista.length; i++) {
-                            //console.log($scope.lista[i]);
-                        }
                     }, function () {
                         alert("VER CONSULTAS EN CONSOLA DE GLASSFISH");
                     });
@@ -39,37 +52,25 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.getDetalles = function () {
             $http.get("./webresources/ServicioDetalleFactura", {})
                     .then(function (response) {
-                        console.log("Aca");
                         $scope.listaDetallesF = response.data;
-                        for (var i = 0; i < $scope.listaDetallesF.length; i++) {
-                            console.log($scope.listaDetallesF[i]);
-                        }
                     }, function () {
                         alert("ERROR EN OBTENER DETALLES");
                     });
         };
-        
+
         $scope.getFactura = function () {
             $http.get("./webresources/ServicioFactura", {})
                     .then(function (response) {
-                        console.log("Aca");
                         $scope.listaFacturas = response.data;
-                        for (var i = 0; i < $scope.listaFacturas.length; i++) {
-                            console.log($scope.listaFacturas[i]);
-                        }
                     }, function () {
                         alert("ERROR EN OBTENER FACTURAS");
                     });
         };
-        
+
         $scope.getCliente = function () {
             $http.get("./webresources/ServicioClienteFactura", {})
                     .then(function (response) {
-                        console.log("Clientess... ");
                         $scope.listaClientes = response.data;
-                        for (var i = 0; i < $scope.listaClientes.length; i++) {
-                            console.log($scope.listaClientes[i]);
-                        }
                     }, function () {
                         alert("ERROR EN OBTENER CLIENTES");
                     });
@@ -78,7 +79,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
 
         $scope.guardarFactura = function () {
             console.log($scope.datosFormulario);
-            $http.post("./webresources/ServicioFactura", $scope.datosFormulario)
+            $http.post("./webresources/ServicioFactura", $scope.datosFormularioFactura)
                     .then(function (response) {
                         $scope.getConsulta();
                     });
@@ -87,7 +88,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
 
         $scope.crearDetalle = function () {
             console.log($scope.datosFormulario);
-            $http.post("./webresources/ServicioDetalleFactura", $scope.datosFormulario)
+            $http.post("./webresources/ServicioDetalleFactura", $scope.datosDetalles)
                     .then(function (response) {
                         $scope.getConsulta();
                     });
