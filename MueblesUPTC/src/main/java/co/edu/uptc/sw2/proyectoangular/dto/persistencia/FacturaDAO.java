@@ -28,20 +28,21 @@ public class FacturaDAO {
         return em.createQuery(query).getResultList();
     }
     
-    public Factura guardarFactura(Factura factura) throws Exception{
+    public Factura guardarFactura(Factura factura) {
         String mensaje = "MONTO INSUFICIENTE";
-         em.persist(factura);
+        
+        em.persist(factura);
         for (ClienteBanco clienteBanco : cbl.getClienteBanco()) {
             if (factura.getIdClienteFactura().getCedula().equals(clienteBanco.getCedula())) {
                 if (clienteBanco.getIdTarjeta().getMonto()>= factura.getValorTotal()) {
                     clienteBanco.getIdTarjeta().setMonto(clienteBanco.getIdTarjeta().getMonto()-factura.getValorTotal());
                     cbl.transaccionBanco(clienteBanco);
                 }else{
-                   new ManejoExcepciones(mensaje);
+                  throw new ManejoExcepciones(mensaje);
                 }
             }else{
                 mensaje = "USUARIO NO ESTA REGISTRADO EN LA ENTIDAD BANCARIA";
-                new ManejoExcepciones(mensaje);
+               throw new ManejoExcepciones(mensaje);
             }
         }
         return  factura;
