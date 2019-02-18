@@ -14,14 +14,18 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
 
         $scope.agregarCarrito = function (dato) {
             $('#modalCantidad').modal('show');
-            $scope.datosDetalles = dato;
-            $scope.datosProducto = dato;
+            $scope.datosDetalles.idProducto = dato;
+//            console.log('estos son los datos de destalles'+JSON.stringify($scope.datosDetalles));
+           // $scope.datosProducto = dato;
         };
 
         $scope.guardarCantidad = function () {
-            console.log($scope.datosProducto);
+            //console.log($scope.datosProducto);
             $('#modalCantidad').modal('hide');
-            console.log($scope.datosDetalles);
+            //console.log($scope.datosDetalles);
+            $scope.datosDetalles.valorTotal = $scope.datosDetalles.idProducto.valor* $scope.datosDetalles.cantidadDetalle;
+            console.log('estos son los datos de destalles'+JSON.stringify($scope.datosDetalles));
+            $scope.crearDetalle();
         };
 
         $scope.validarCliente = function () {
@@ -93,7 +97,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
             console.log($scope.datosFormulario);
             $http.post("./webresources/ServicioDetalleFactura", $scope.datosDetalles)
                     .then(function (response) {
-//                        $scope.getConsulta();
+                        $scope.getDetalles();
                     });
 
         };

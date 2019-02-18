@@ -12,11 +12,16 @@
                 <th>
                     Cantidad
                 </th>
+                <th>
+                    Valor total
+                </th>
             </tr>
             <tr ng-repeat="row in listaDetallesF">
                 <td>{{row.idProducto.nombre}}</td>
                 <td>{{row.idProducto.valor}}</td>
-                <td>{{row.cantidadDetalle}}</td>
+                <td>{{row.cantidadDetalle}}</td>                
+                <td>{{row.valorTotal}}</td>
+
             </tr>
         </table>
         <br/>
@@ -48,7 +53,6 @@
                 <td>{{row.valor}}</td>
                 <td>{{row.cantidad}}</td>
                 <!--<td><input id="cantidad" class="form-control>" type="number" placeholder="Cantidad" value="1"/></td>-->
-
                 <td class="row">
                     <button type="button" class="btn btn-info" ng-click="agregarCarrito(row)">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito
@@ -68,17 +72,11 @@
             <div class="modal-body">
                 <label >Cantidad:</label>
                 <input id="cantidadDetalle" class="form-control>" 
-                       ng-model="datosProducto.cantidadDetalle" 
+                       ng-model="datosDetalles.cantidadDetalle" 
                        type="number" 
                        placeholder="Cantidad" 
                        value="1"/>
-                <label>Valor Total: </label>
-                <div class="row" ng-model="datosProducto.idProducto">Id: {{datosDetalles.idProducto}}</div>
-                <div class="row" ng-model="datosProducto.nombre">Producto: {{datosDetalles.nombre}}</div>
-                <div ng-model="datosProducto.valor">Valor: {{datosDetalles.valor}}</div>
-                <div ng-model="datosProducto.cantidadDetalle">Cantidad: {{datosDetalles.cantidadDetalle}}</div>
-                <!--<div ng-model="datosProducto.valorTotal" >Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>-->
-                <div>Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>
+                <div>Total: {{datosDetalles.cantidadDetalle * datosDetalles.idProducto.valor}}</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="guardarCantidad()">Agregar</button>
@@ -94,8 +92,9 @@
         <div class="modal-content">
             <div class="modal-body">
                 <label>Cedula del Cliente:</label>
-                <select id="cedula" class="form-control" ng-model="datosCliente.cedula">
-                    <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
+                <select id="carrera" class="form-control" 
+                        ng-model="datosFormularioFactura.cliente"
+                        ng-options="option.nombres for option in listaClientes track by option.idClienteFactura">
                 </select>
             </div>
             <div class="modal-footer">
@@ -122,9 +121,9 @@
                        ng-model="datosCliente.cedula" 
                        type="number" 
                        placeholder="Cedula"/>
-<!--                <select id="nombreCliente" class="form-control" ng-model="datosCliente.cedula">
-                    <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
-                </select>-->
+                <!--                <select id="nombreCliente" class="form-control" ng-model="datosCliente.cedula">
+                                    <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
+                                </select>-->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="crearCliente()">Crear Cliente</button>
