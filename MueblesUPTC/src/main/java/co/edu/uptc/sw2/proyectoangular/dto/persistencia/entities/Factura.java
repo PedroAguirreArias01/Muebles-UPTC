@@ -1,6 +1,7 @@
 package co.edu.uptc.sw2.proyectoangular.dto.persistencia.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -20,16 +21,14 @@ public class Factura implements Serializable {
     private int idFactura;
 
 //    @OneToMany(mappedBy = "idFactura", orphanRemoval = true, cascade = {CascadeType.ALL})
-    @OneToMany(mappedBy = "idFactura", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "idFactura", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.ALL})
     private List<DetalleFactura> detalleFactura;
     private ClienteFactura idClienteFactura;
-
-    //@Formats.DateTime(pattern = "dd-mm-yyyy");
-    //@Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
     public Factura() {
+        this.fecha = Date.from(Instant.now());
     }
 
     public int getIdFactura() {

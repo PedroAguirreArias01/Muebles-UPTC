@@ -3,29 +3,27 @@
 module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
         //listar
         $scope.lista = null;
-        $scope.listaDetallesF = null;
+        //$scope.listaDetallesF = null;
         $scope.listaFacturas = null;
         $scope.listaClientes = null;
         $scope.listaProductos = null;
         $scope.datosFormularioFactura = {listaDetallesF: []};
         $scope.datosDetalles = {};
-        $scope.datosProducto = {};
         $scope.datosCliente = {};
 
         $scope.agregarCarrito = function (dato) {
             $('#modalCantidad').modal('show');
             $scope.datosDetalles.idProducto = dato;
-//            console.log('estos son los datos de destalles'+JSON.stringify($scope.datosDetalles));
-           // $scope.datosProducto = dato;
         };
 
         $scope.guardarCantidad = function () {
-            //console.log($scope.datosProducto);
-            $('#modalCantidad').modal('hide');
-            //console.log($scope.datosDetalles);
-            $scope.datosDetalles.valorTotal = $scope.datosDetalles.idProducto.valor* $scope.datosDetalles.cantidadDetalle;
-            console.log('estos son los datos de destalles'+JSON.stringify($scope.datosDetalles));
+            $scope.datosDetalles.valorTotal = $scope.datosDetalles.idProducto.valor * $scope.datosDetalles.cantidadDetalle;
+            $scope.datosFormularioFactura.listaDetallesF.push($scope.datosDetalles);
+            
+            //console.log('estos son los datos de destalles' + JSON.stringify($scope.datosDetalles));
+            //$scope.datosDetalles.idFactura = $scope.datosFormularioFactura;
             $scope.crearDetalle();
+            $('#modalCantidad').modal('hide');
         };
 
         $scope.validarCliente = function () {
@@ -38,14 +36,10 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         };
 
         $scope.finalizarCompra = function () {
-            for (var i = 0; i < $scope.listaClientes.length; i++) {
-                if ($scope.listaClientes[i].cedula === $scope.datosCliente.cedula) {
-                    console.log("Entraaa " + JSON.stringify($scope.listaClientes[i]));
-                    $scope.datosFormularioFactura.idClienteFactura = ($scope.listaClientes[i]);
-                }
-            }
-            console.log("Factura: " + $scope.datosFormularioFactura.idClienteFactura.cedula);
-            $('#modalCantidad').modal('hide');
+            console.log("Factura: " + JSON.stringify($scope.datosFormularioFactura));
+            $scope.guardarFactura();
+            alert('COMPRA FINALIZADA CON EXITO');
+            $('#modalRegistrarCliente').modal('hide');
         };
 
         $scope.getProductos = function () {
@@ -85,16 +79,14 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         };
 
         $scope.guardarFactura = function () {
-            console.log($scope.datosFormulario);
             $http.post("./webresources/ServicioFactura", $scope.datosFormularioFactura)
                     .then(function (response) {
-                        $scope.getConsulta();
+                        //$scope.getConsulta();
                     });
             $scope.panelEditar = false;
         };
 
         $scope.crearDetalle = function () {
-            console.log($scope.datosFormulario);
             $http.post("./webresources/ServicioDetalleFactura", $scope.datosDetalles)
                     .then(function (response) {
                         $scope.getDetalles();
@@ -113,7 +105,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         };
 
         $scope.getProductos();
-        $scope.getDetalles();
+        //$scope.getDetalles();
         $scope.getFactura();
         $scope.getCliente();
     }]);

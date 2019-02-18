@@ -1,3 +1,6 @@
+<div style="text-align: center">
+    <h2>BIENVENID@ A TU SISTEMA POST !</h2>
+</div>
 <div class="panel panel-primary" ng-hide="panelVentas">
     <div class="panel-heading">Ventas</div>
     <div class="panel-body">
@@ -93,8 +96,8 @@
             <div class="modal-body">
                 <label>Cedula del Cliente:</label>
                 <select id="carrera" class="form-control" 
-                        ng-model="datosFormularioFactura.cliente"
-                        ng-options="option.nombres for option in listaClientes track by option.idClienteFactura">
+                        ng-model="datosFormularioFactura.idClienteFactura"
+                        ng-options="option.cedula for option in listaClientes track by option.cedula">
                 </select>
             </div>
             <div class="modal-footer">
