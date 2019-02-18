@@ -18,7 +18,6 @@ public class DetalleFactura implements Serializable {
     @ManyToOne
     private Producto idProducto;
     private int cantidadDetalle;
-    private float valorTotal;
 
     public DetalleFactura() {
     }
@@ -45,13 +44,5 @@ public class DetalleFactura implements Serializable {
 
     public void setCantidadDetalle(int cantidadDetalle) {
         this.cantidadDetalle = cantidadDetalle;
-    }
-
-    public float getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
     }
 }

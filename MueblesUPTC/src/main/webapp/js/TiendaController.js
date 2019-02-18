@@ -9,17 +9,17 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.listaProductos = null;
         $scope.datosFormularioFactura = {listaDetallesF: []};
         $scope.datosDetalles = {};
+        $scope.datosProducto = {};
         $scope.datosCliente = {};
-        let valorTotal = 0;
 
         $scope.agregarCarrito = function (dato) {
             $('#modalCantidad').modal('show');
             $scope.datosDetalles = dato;
+            $scope.datosProducto = dato;
         };
 
         $scope.guardarCantidad = function () {
-            valorTotal = $scope.datosDetalles.cantidadDetalle * $scope.datosDetalles.valor;
-            console.log(valorTotal);
+            console.log($scope.datosProducto);
 
             $('#modalCantidad').modal('hide');
             console.log($scope.datosDetalles);

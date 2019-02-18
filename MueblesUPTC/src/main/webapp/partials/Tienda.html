@@ -12,15 +12,11 @@
                 <th>
                     Cantidad
                 </th>
-                <th>
-                    Valor Total
-                </th>
             </tr>
             <tr ng-repeat="row in listaDetallesF">
                 <td>{{row.idProducto.nombre}}</td>
                 <td>{{row.idProducto.valor}}</td>
                 <td>{{row.cantidadDetalle}}</td>
-                <td>{{row.valorTotal}}</td>
             </tr>
         </table>
         <br/>
@@ -72,19 +68,19 @@
             <div class="modal-body">
                 <label >Cantidad:</label>
                 <input id="cantidadDetalle" class="form-control>" 
-                       ng-model="datosDetalles.cantidadDetalle" 
+                       ng-model="datosProducto.cantidadDetalle" 
                        type="number" 
                        placeholder="Cantidad" 
                        value="1"/>
                 <label>Valor Total: </label>
-                <label id="valorTotal"
-                       class="form-control"
-                       ng-model="datosDetalles.valorTotal" 
-                       type="number"
-                       >{{datosDetalles.cantidadDetalle*datosDetalles.valor}}"</label>
+                <div ng-model="datosProducto.idProducto">Id: {{datosDetalles.idProducto}}</div>
+                <div ng-model="datosProducto.nombre">Producto: {{datosDetalles.nombre}}</div>
+                <div ng-model="datosProducto.valor">Valor: {{datosDetalles.valor}}</div>
+                <div ng-model="datosProducto.cantidad">Cantidad: {{datosDetalles.cantidad}}</div>
+                <div ng-model="datosProducto.valorTotal" >Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="guardarCantidad()">Agregar Cantidad</button>
+                <button type="button" class="btn btn-default" ng-click="guardarCantidad()">Agregar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
