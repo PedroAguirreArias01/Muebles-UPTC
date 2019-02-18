@@ -20,7 +20,6 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
 
         $scope.guardarCantidad = function () {
             console.log($scope.datosProducto);
-
             $('#modalCantidad').modal('hide');
             console.log($scope.datosDetalles);
         };
@@ -29,11 +28,16 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
             $('#modalRegistrarCliente').modal('show');
         };
 
+        $scope.mostrarCrearCliente = function () {
+            $('#modalRegistrarCliente').modal('hide');
+            $('#modalCrearCliente').modal('show');
+        };
+
         $scope.finalizarCompra = function () {
             for (var i = 0; i < $scope.listaClientes.length; i++) {
                 if ($scope.listaClientes[i].cedula === $scope.datosCliente.cedula) {
-                    console.log("Entraaa " + $scope.listaClientes[i].nombre);
-                    $scope.datosFormularioFactura = $scope.listaClientes[i];
+                    console.log("Entraaa " + JSON.stringify($scope.listaClientes[i]));
+                    $scope.datosFormularioFactura.idClienteFactura = ($scope.listaClientes[i]);
                 }
             }
             console.log("Factura: " + $scope.datosFormularioFactura.idClienteFactura.cedula);
@@ -76,7 +80,6 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
                     });
         };
 
-
         $scope.guardarFactura = function () {
             console.log($scope.datosFormulario);
             $http.post("./webresources/ServicioFactura", $scope.datosFormularioFactura)
@@ -90,9 +93,19 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
             console.log($scope.datosFormulario);
             $http.post("./webresources/ServicioDetalleFactura", $scope.datosDetalles)
                     .then(function (response) {
-                        $scope.getConsulta();
+//                        $scope.getConsulta();
                     });
-            $scope.panelEditar = false;
+
+        };
+
+        $scope.crearCliente = function () {
+            console.log("Esto es cliente " + JSON.stringify($scope.datosCliente));
+            $http.post("./webresources/ServicioClienteFactura", $scope.datosCliente)
+                    .then(function (response) {
+//                        $scope.getConsulta();
+                    });
+            $('#modalCrearCliente').modal('hide');
+            $('#modalRegistrarCliente').modal('show');
         };
 
         $scope.getProductos();

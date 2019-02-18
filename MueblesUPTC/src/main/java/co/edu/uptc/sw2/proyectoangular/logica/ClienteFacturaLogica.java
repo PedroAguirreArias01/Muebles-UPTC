@@ -21,7 +21,7 @@ public class ClienteFacturaLogica {
         return clienteDAO.getCliente();
     }
     
-    public ClienteFactura guardarProducto(ClienteFactura cf){
+    public ClienteFactura guardarClienteFactura(ClienteFactura cf){
         return  clienteDAO.guardarCliente(cf);
     }
     

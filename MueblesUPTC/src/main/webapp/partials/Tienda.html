@@ -73,11 +73,12 @@
                        placeholder="Cantidad" 
                        value="1"/>
                 <label>Valor Total: </label>
-                <div ng-model="datosProducto.idProducto">Id: {{datosDetalles.idProducto}}</div>
-                <div ng-model="datosProducto.nombre">Producto: {{datosDetalles.nombre}}</div>
+                <div class="row" ng-model="datosProducto.idProducto">Id: {{datosDetalles.idProducto}}</div>
+                <div class="row" ng-model="datosProducto.nombre">Producto: {{datosDetalles.nombre}}</div>
                 <div ng-model="datosProducto.valor">Valor: {{datosDetalles.valor}}</div>
-                <div ng-model="datosProducto.cantidad">Cantidad: {{datosDetalles.cantidad}}</div>
-                <div ng-model="datosProducto.valorTotal" >Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>
+                <div ng-model="datosProducto.cantidadDetalle">Cantidad: {{datosDetalles.cantidadDetalle}}</div>
+                <!--<div ng-model="datosProducto.valorTotal" >Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>-->
+                <div>Total: {{datosDetalles.cantidadDetalle * datosDetalles.valor}}</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="guardarCantidad()">Agregar</button>
@@ -93,12 +94,40 @@
         <div class="modal-content">
             <div class="modal-body">
                 <label>Cedula del Cliente:</label>
-                <select id="nombreCliente" class="form-control" ng-model="datosCliente.cedula">
+                <select id="cedula" class="form-control" ng-model="datosCliente.cedula">
                     <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
                 </select>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" ng-click="finalizarCompra()">Seleccionar Cliente</button>
+                <button type="button" class="btn btn-default" ng-click="mostrarCrearCliente()">Crear Cliente Nuevo</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Crear Cliente-->
+<div class="modal fade" id="modalCrearCliente" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <label>Nombre del Cliente:</label>
+                <input id="nombre" class="form-control>" 
+                       ng-model="datosCliente.nombre" 
+                       type="text" 
+                       placeholder="Nombre"/><br/>
+                <label>Cedula del Cliente:</label>
+                <input id="cedula" class="form-control>" 
+                       ng-model="datosCliente.cedula" 
+                       type="number" 
+                       placeholder="Cedula"/>
+<!--                <select id="nombreCliente" class="form-control" ng-model="datosCliente.cedula">
+                    <option ng-repeat="row in listaClientes">{{row.cedula}}</option>
+                </select>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="crearCliente()">Crear Cliente</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
