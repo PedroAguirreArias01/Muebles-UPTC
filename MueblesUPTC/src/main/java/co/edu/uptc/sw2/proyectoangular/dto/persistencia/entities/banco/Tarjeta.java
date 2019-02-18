@@ -18,7 +18,7 @@ public class Tarjeta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTarjeta;
     private int numeroTarjeta;
-    private int monto;
+    private double monto;
 
     public Tarjeta() {
     }
@@ -39,11 +39,11 @@ public class Tarjeta implements Serializable {
         this.numeroTarjeta = numeroTarjeta;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return monto;
     }
 
-    public void setMonto(int monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 }

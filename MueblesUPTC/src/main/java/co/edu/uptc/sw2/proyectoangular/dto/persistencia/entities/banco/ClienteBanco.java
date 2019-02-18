@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -12,6 +14,9 @@ import javax.persistence.Id;
  * @author DANIELA
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "listaBanco", query = "select e from ClienteBanco e")
+})
 public class ClienteBanco implements Serializable {
     
     @Id

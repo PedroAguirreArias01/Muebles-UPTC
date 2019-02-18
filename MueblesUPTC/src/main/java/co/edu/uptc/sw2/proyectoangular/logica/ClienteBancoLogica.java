@@ -29,8 +29,9 @@ public class ClienteBancoLogica {
         clienteBancoDAO.eliminarClienteBanco(clienteBanco);
     }
     
-    public ClienteBanco editarClienteBanco(ClienteBanco clienteBanco){
-        return clienteBancoDAO.editarClienteBanco(clienteBanco);
+    public ClienteBanco transaccionBanco(ClienteBanco clienteBanco){
+        return clienteBancoDAO.transaccionBanco(clienteBanco);
     }
+    
     
 }

@@ -10,6 +10,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.datosFormularioFactura = {listaDetallesF: []};
         $scope.datosDetalles = {};
         $scope.datosCliente = {};
+        let valorTotal = 0;
 
         $scope.agregarCarrito = function (dato) {
             $('#modalCantidad').modal('show');
@@ -19,7 +20,9 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
         $scope.guardarCantidad = function () {
             $scope.datosDetalles.valorTotal = $scope.datosDetalles.idProducto.valor * $scope.datosDetalles.cantidadDetalle;
             $scope.datosFormularioFactura.listaDetallesF.push($scope.datosDetalles);
-            
+            valorTotal += $scope.datosDetalles.valorTotal;
+            document.getElementById('valorTotal').innerHTML = valorTotal;
+            console.log('este es el valor total: '+valorTotal);
             //console.log('estos son los datos de destalles' + JSON.stringify($scope.datosDetalles));
             //$scope.datosDetalles.idFactura = $scope.datosFormularioFactura;
             $scope.crearDetalle();
@@ -37,6 +40,7 @@ module.controller('TiendaCtrl', ['$scope', '$filter', '$http', function ($scope,
 
         $scope.finalizarCompra = function () {
             console.log("Factura: " + JSON.stringify($scope.datosFormularioFactura));
+            $scope.datosFormularioFactura.valorTotal = valorTotal;
             $scope.guardarFactura();
             alert('COMPRA FINALIZADA CON EXITO');
             $('#modalRegistrarCliente').modal('hide');

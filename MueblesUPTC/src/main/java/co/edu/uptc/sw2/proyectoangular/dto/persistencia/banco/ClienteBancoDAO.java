@@ -31,7 +31,7 @@ public class ClienteBancoDAO {
         em.remove(em.find(ClienteBanco.class, clienteBanco.getIdClienteBanco()));
     }
     
-    public ClienteBanco editarClienteBanco(ClienteBanco clienteBanco){
+    public ClienteBanco transaccionBanco(ClienteBanco clienteBanco){
         em.merge(clienteBanco);
         return clienteBanco;
     }

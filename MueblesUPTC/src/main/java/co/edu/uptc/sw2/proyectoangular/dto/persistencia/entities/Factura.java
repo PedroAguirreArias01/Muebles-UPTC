@@ -26,6 +26,7 @@ public class Factura implements Serializable {
     private ClienteFactura idClienteFactura;
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    private double valorTotal;
 
     public Factura() {
         this.fecha = Date.from(Instant.now());
@@ -61,5 +62,13 @@ public class Factura implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

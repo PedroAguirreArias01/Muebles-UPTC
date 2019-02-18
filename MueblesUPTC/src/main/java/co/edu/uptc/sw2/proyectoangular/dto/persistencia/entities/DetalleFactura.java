@@ -47,13 +47,13 @@ public class DetalleFactura implements Serializable {
         this.cantidadDetalle = cantidadDetalle;
     }
 
-//    public Factura getIdFactura() {
-//        return idFactura;
-//    }
-//
-//    public void setIdFactura(Factura idFactura) {
-//        this.idFactura = idFactura;
-//    }
+    public Factura getIdFactura() {
+        return idFactura;
+    }
+
+    public void setIdFactura(Factura idFactura) {
+        this.idFactura = idFactura;
+    }
 
     public int getValorTotal() {
         return valorTotal;
